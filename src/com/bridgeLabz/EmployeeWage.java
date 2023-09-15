@@ -1,26 +1,50 @@
 package com.bridgeLabz;
+
 public class EmployeeWage {
+
+    int IS_FULL_TIME = 2;
+    int IS_PART_TIME = 1;
+    int EMP_RATE_PER_HOUR = 20;
+    int EMP_WORKING_DAY = 20;
+    int EMP_WORKING_HRS= 100;
+
     public static void main(String[] args) {
-        //variables
-        int isFullTime = 2;
-        int isPartTime = 1;
-        int emp_rate_per_hrs = 20;
-        int emphrs;
-        int empwage;
-        //use math random method
-        int empcheck = (int)(Math.random()*10%3);
-        //check emplyee prsent or not
-        if (empcheck == isFullTime){
-            emphrs = 8;
-        } else if (empcheck == isPartTime) {
+        EmployeeWage obj = new EmployeeWage();
+        int empHrs = 0;
+        int totalEmpHrs = 0;
+        int totalEmpDays = 0;
 
-            emphrs = 4;
+        while (totalEmpHrs <= obj.EMP_WORKING_HRS && totalEmpDays < obj.EMP_WORKING_DAY){
 
-        } else {
-            emphrs = 0;
+            totalEmpDays++;
+
+            int empCheck = (int) (Math.floor(Math.random() * 10) % 3);
+
+            switch (empCheck) {
+
+                case 1:
+
+                    empHrs = 4;
+                    break;
+
+                case 2:
+
+                    empHrs = 8;
+                    break;
+
+
+                default:
+                    empHrs = 0;
+
+            }
+            totalEmpHrs = empHrs + totalEmpHrs;
+            System.out.println("day "+totalEmpDays+ ": " +totalEmpHrs + " Hours");
+
         }
 
-        empwage = emphrs * emp_rate_per_hrs;
-        System.out.println("emp wage is : "+empwage);
+        int empwage = totalEmpHrs * obj.EMP_RATE_PER_HOUR;
+        System.out.println(empwage);
+
     }
+
 }
